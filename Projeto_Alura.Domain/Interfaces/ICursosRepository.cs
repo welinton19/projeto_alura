@@ -2,7 +2,7 @@
 
 namespace Projeto_Alura.Domain.Interfaces;
 
-public interface ICursos
+public interface ICursosRepository
 {
     Task<IEnumerable<Cursos>> GetAllCursosAsync();
     Task<Cursos> GetCursoByIdAsync(long id);

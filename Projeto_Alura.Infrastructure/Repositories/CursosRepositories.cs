@@ -1,12 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using Projeto_Alura.Domain.Entitis;
+using Projeto_Alura.Domain.Interfaces;
+using Projeto_Alura.Infrastructure.Data;
 
-namespace Projeto_Alura.Infrastructure.Repositories
+namespace Projeto_Alura.Infrastructure.Repositories;
+
+public class CursosRepositories : ICursosRepository
 {
-    internal class CursosRepositories
+    private readonly AluraDbContext _dbcontext;
+
+    public CursosRepositories(AluraDbContext dbcontext)
     {
+        _dbcontext = dbcontext;
+    }
+
+    public async Task AddCursoAsync(Cursos curso)
+    {
+        _dbcontext.Cursos.Add(curso);
+        await _dbcontext.SaveChangesAsync();
+        return;
+    }
+
+    public async Task DeleteCursoAsync(long id)
+    {
+        var curso = await _dbcontext.Cursos.FindAsync(id);
+        if (curso != null)
+        {
+            _dbcontext.Cursos.Remove(curso);
+            await _dbcontext.SaveChangesAsync();
+        }
+    }
+
+    public async Task<IEnumerable<Cursos>> GetAllCursosAsync()
+    {
+        return await _dbcontext.Cursos.ToListAsync();
+    }
+
+    public async Task<Cursos> GetCursoByIdAsync(long id)
+    {
+        return await _dbcontext.Cursos.FindAsync(id);
+    }
+
+    public async Task UpdateCursoAsync(Cursos curso)
+    {
+        _dbcontext.Cursos.Update(curso);
+        await _dbcontext.SaveChangesAsync();
+        return;
     }
 }

@@ -1,12 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using Projeto_Alura.Domain.Entitis;
+using Projeto_Alura.Domain.Interfaces;
+using Projeto_Alura.Infrastructure.Data;
 
-namespace Projeto_Alura.Infrastructure.Repositories
+namespace Projeto_Alura.Infrastructure.Repositories;
+
+public class MatriculaRepositories : IMatriculasRepository
 {
-    internal class MatriculaRepositories
+    private readonly AluraDbContext _dbcontext;
+
+    public MatriculaRepositories(AluraDbContext dbcontext)
     {
+        _dbcontext = dbcontext;
     }
+
+    public async Task AddMatriculaAsync(Matriculas matricula)
+    {
+        _dbcontext.Matriculas.Add(matricula);
+        await _dbcontext.SaveChangesAsync();
+        return;
+    }
+
+    public async Task DeleteMatriculaAsync(long id)
+    {
+        var matricula = await _dbcontext.Matriculas.FindAsync(id);
+        if (matricula != null)
+        {
+            _dbcontext.Matriculas.Remove(matricula);
+            await _dbcontext.SaveChangesAsync();
+        }
+    }
+
+    public async Task<IEnumerable<Matriculas>> GetAllMatriculasAsync()
+    {
+        return await _dbcontext.Matriculas.ToListAsync();
+    }
+
+    public async Task<Matriculas> GetMatriculaByIdAsync(long id)
+    {
+        return await _dbcontext.Matriculas.FindAsync(id);
+    }
+
+    public async Task UpdateMatriculaAsync(Matriculas matricula)
+    {
+        _dbcontext.Matriculas.Update(matricula);
+        await _dbcontext.SaveChangesAsync();
+        return;
+    }
+    
 }

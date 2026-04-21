@@ -1,4 +1,5 @@
 ﻿using Projeto_Alura.Domain.Enum;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Projeto_Alura.Domain.Entitis;
 
@@ -8,6 +9,7 @@ public class Users
     public string Name { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;
+    [NotMapped]
     public string ConfirmPassword { get; set; } = string.Empty;
     public Roles Role { get; set; }
 

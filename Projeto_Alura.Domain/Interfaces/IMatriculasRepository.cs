@@ -2,7 +2,7 @@
 
 namespace Projeto_Alura.Domain.Interfaces;
 
-public interface IMatriculas
+public interface IMatriculasRepository
 {
     Task<IEnumerable<Matriculas>> GetAllMatriculasAsync();
     Task<Matriculas> GetMatriculaByIdAsync(long id);

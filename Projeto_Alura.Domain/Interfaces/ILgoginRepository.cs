@@ -1,6 +1,6 @@
 ﻿namespace Projeto_Alura.Domain.Interfaces;
 
-public interface ILogin
+public interface ILoginRepository
 {
     Task<bool> LoginAsync(string email, string senha);
 }
