@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/Bakck_End/">
+    <Project Path="Projeto_Alura.Application/Projeto_Alura.Application.csproj" />
+    <Project Path="Projeto_Alura.Domain/Projeto_Alura.Domain.csproj" />
+    <Project Path="Projeto_Alura.Infrastructure/Projeto_Alura.Infrastructure.csproj" />
+    <Project Path="Projeto_Alura/Projeto_Alura.csproj" />
+  </Folder>
+  <Folder Name="/Extensoes/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Folder Name="/Front_End/">
+    <Project Path="Projeto_Alura_Front_End/Projeto_Alura_Front_End.esproj">
+      <Build />
+      <Deploy />
+    </Project>
+  </Folder>
+  <Project Path="Projeto_Alura.AppHost/Projeto_Alura.AppHost.csproj" />
+  <Project Path="Projeto_Alura.ServiceDefaults/Projeto_Alura.ServiceDefaults.csproj" />
+</Solution>
