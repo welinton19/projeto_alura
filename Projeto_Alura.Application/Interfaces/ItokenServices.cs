@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Projeto_Alura.Application.DTOs;
 
-namespace Projeto_Alura.Application.Interfaces
+namespace Projeto_Alura.Application.Interfaces;
+
+public interface ITokenServices
 {
-    internal interface ItokenServices
-    {
-    }
+    Task<string> GerartToken(string email, string role);
 }

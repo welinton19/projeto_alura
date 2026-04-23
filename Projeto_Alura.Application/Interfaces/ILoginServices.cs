@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Projeto_Alura.Application.DTOs;
+using Projeto_Alura.Domain.Entitis;
 
-namespace Projeto_Alura.Application.Interfaces
+namespace Projeto_Alura.Application.Interfaces;
+
+public interface ILoginServices
 {
-    internal interface ILoginServices
-    {
-    }
+    Task<bool> LoginAsync(LoginDTO login);
 }
