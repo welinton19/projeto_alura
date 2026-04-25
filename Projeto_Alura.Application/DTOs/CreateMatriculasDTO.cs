@@ -2,5 +2,8 @@
 
 public class CreateMatriculasDTO
 {
-    public string Matriculas;
+    public long Id { get; set; }
+    public long UserId { get; set; }
+    public long CursoId { get; set; }
+    public DateTime DataMatricula { get; set; }
 }

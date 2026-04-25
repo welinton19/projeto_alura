@@ -7,6 +7,7 @@ public interface IMatriculasServices
 {
     Task <List<Matriculas>> GetMatriculasAsync (GetAllMatriculasDTO getAllMatriculas);
     Task<Matriculas> CreateMatriculasAsync(CreateMatriculasDTO createMatriculasDTO);
+    Task<Matriculas> GetById(GetMatriculasByIdDTO getMatriculasByIdDTO);
     Task<Matriculas> UpdateMatriculasAsync(UpdateMatriculasDTO updateMatriculasDTO);
     Task<Matriculas> DeleteMatriculasAsync(DeleteMatriculasDTO deleteMatriculasDTO);
 }

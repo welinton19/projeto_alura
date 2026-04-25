@@ -1,4 +1,5 @@
 ﻿using Projeto_Alura.Application.DTOs;
+using Projeto_Alura.Application.Exceptions;
 using Projeto_Alura.Application.Interfaces;
 using Projeto_Alura.Domain.Entitis;
 using Projeto_Alura.Domain.Interfaces;
@@ -71,7 +72,7 @@ public class UsersService : IUsersServices
     {
         var usersid = await _userRepository.GetUserByIdAsync(idUserDTO.Id);
         if (usersid == null)
-            return null;
+            throw new NotFoundExceptions("Usuario", idUserDTO);
         return usersid;
     }
 

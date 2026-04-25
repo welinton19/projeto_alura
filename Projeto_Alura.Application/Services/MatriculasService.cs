@@ -14,23 +14,68 @@ public class MatriculasService : IMatriculasServices
         _matriculasRepository = matriculasRepository;
     }
 
-    public Task<Matriculas> CreateMatriculasAsync(CreateMatriculasDTO createMatriculasDTO)
+    public async Task<Matriculas> CreateMatriculasAsync(CreateMatriculasDTO createMatriculasDTO)
     {
-        throw new NotImplementedException();
+        
+        if (createMatriculasDTO == null)
+            throw new ArgumentNullException(nameof(createMatriculasDTO));
+
+        
+        var matricula = new Matriculas
+        {
+            Id = createMatriculasDTO.Id,
+            UserId = createMatriculasDTO.UserId,
+            CursoId = createMatriculasDTO.CursoId,
+            DataMatricula = DateTime.UtcNow
+        };
+
+        
+        var criarMatricula = await _matriculasRepository.AddMatriculaAsync(matricula);
+
+        return criarMatricula;
     }
 
-    public Task<Matriculas> DeleteMatriculasAsync(DeleteMatriculasDTO deleteMatriculasDTO)
+    public async Task<Matriculas> DeleteMatriculasAsync(DeleteMatriculasDTO deleteMatriculasDTO)
     {
-        throw new NotImplementedException();
+        var exclruirmatricula = await _matriculasRepository.DeleteMatriculaAsync(deleteMatriculasDTO.Id);
+        if (exclruirmatricula == null)
+            return null;
+        return exclruirmatricula;
     }
 
-    public Task<List<Matriculas>> GetMatriculasAsync(GetAllMatriculasDTO getAllMatriculas)
+    public async Task<Matriculas> GetById(GetMatriculasByIdDTO getMatriculasByIdDTO)
     {
-        throw new NotImplementedException();
+        var idmatricula = await _matriculasRepository.GetMatriculaByIdAsync(id: getMatriculasByIdDTO.Id);
+        if (idmatricula == null)
+            return null; 
+        return idmatricula;
     }
 
-    public Task<Matriculas> UpdateMatriculasAsync(UpdateMatriculasDTO updateMatriculasDTO)
+    public async Task<List<Matriculas>> GetMatriculasAsync(GetAllMatriculasDTO getAllMatriculas)
     {
-        throw new NotImplementedException();
+        var listamatriculas = await _matriculasRepository.GetAllMatriculasAsync();
+        var Matriculas = new List<Matriculas>();
+        foreach(var matricula  in listamatriculas) 
+        {
+            Matriculas.Add(new Matriculas 
+            {
+                Id = matricula.Id,
+                UserId = matricula.UserId,
+                CursoId = matricula.CursoId,
+                DataMatricula = matricula.DataMatricula,
+            });
+        }
+        return Matriculas;
+    }
+
+    public async Task<Matriculas> UpdateMatriculasAsync(UpdateMatriculasDTO updateMatriculasDTO)
+    {
+        var atualizar = await _matriculasRepository.UpdateMatriculaAsync(new Matriculas 
+        {
+            Id = updateMatriculasDTO.Id,
+            UserId = updateMatriculasDTO.UserId,
+            DataMatricula = updateMatriculasDTO .DataMatricula,
+        });
+        return atualizar;
     }
 }

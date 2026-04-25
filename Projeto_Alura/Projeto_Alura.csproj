@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Projeto_Alura.ServiceDefaults\Projeto_Alura.ServiceDefaults.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Middlewres\" />
+  </ItemGroup>
+
 </Project>

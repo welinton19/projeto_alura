@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
 using Projeto_Alura.Domain.Entitis;
 using Projeto_Alura.Domain.Interfaces;
 using Projeto_Alura.Infrastructure.Data;
@@ -14,14 +15,14 @@ public class MatriculaRepositories : IMatriculasRepository
         _dbcontext = dbcontext;
     }
 
-    public async Task AddMatriculaAsync(Matriculas matricula)
+    public async Task<Matriculas> AddMatriculaAsync(Matriculas matricula)
     {
         _dbcontext.Matriculas.Add(matricula);
         await _dbcontext.SaveChangesAsync();
-        return;
+        return matricula;
     }
 
-    public async Task DeleteMatriculaAsync(long id)
+    public async Task<Matriculas> DeleteMatriculaAsync(long id)
     {
         var matricula = await _dbcontext.Matriculas.FindAsync(id);
         if (matricula != null)
@@ -29,6 +30,7 @@ public class MatriculaRepositories : IMatriculasRepository
             _dbcontext.Matriculas.Remove(matricula);
             await _dbcontext.SaveChangesAsync();
         }
+        return (matricula);
     }
 
     public async Task<IEnumerable<Matriculas>> GetAllMatriculasAsync()
@@ -41,11 +43,11 @@ public class MatriculaRepositories : IMatriculasRepository
         return await _dbcontext.Matriculas.FindAsync(id);
     }
 
-    public async Task UpdateMatriculaAsync(Matriculas matricula)
+    public async Task<Matriculas> UpdateMatriculaAsync(Matriculas matricula)
     {
         _dbcontext.Matriculas.Update(matricula);
         await _dbcontext.SaveChangesAsync();
-        return;
+        return matricula;
     }
     
 }

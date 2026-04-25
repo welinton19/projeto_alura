@@ -1,4 +1,5 @@
 ﻿using Projeto_Alura.Application.DTOs;
+using Projeto_Alura.Application.Exceptions;
 using Projeto_Alura.Application.Interfaces;
 using Projeto_Alura.Domain.Entitis;
 using Projeto_Alura.Domain.Interfaces;
@@ -14,28 +15,62 @@ public class CursosService : ICursosServices
         _cursosRepository = cursosRepository;
     }
 
-    public Task<Cursos> CreateCurosAsync(CreateCursosDTO createCursos)
+    public async Task<Cursos> CreateCurosAsync(CreateCursosDTO createCursos)
     {
-        throw new NotImplementedException();
+        if (createCursos == null)
+            throw new ArgumentException(nameof(createCursos));
+
+        var curso = new Cursos 
+        {
+            Id = createCursos.id,
+            Name = createCursos.Name,
+            Description = createCursos.Description
+        };
+
+        var criarcurso = await _cursosRepository.AddCursoAsync(curso);
+        
+        return criarcurso;
     }
 
-    public Task<Cursos> DeleteCursosAsync(DeleteCursosDTO deleteCursos)
+    public async Task<Cursos> DeleteCursosAsync(DeleteCursosDTO deleteCursos)
     {
-        throw new NotImplementedException();
+        var deletacurso = await _cursosRepository.DeleteCursoAsync(deleteCursos.Id);
+        if (deletacurso == null)
+            return null;
+        return deletacurso;
     }
 
-    public Task<List<Cursos>> GetAllCursosAsync(GetAllCursosDTO getAllCursos)
+    public async Task<List<Cursos>> GetAllCursosAsync(GetAllCursosDTO getAllCursos)
     {
-        throw new NotImplementedException();
+        var allcurso = await _cursosRepository.GetAllCursosAsync();
+        var cursos = new List<Cursos>();
+        foreach (var curso in allcurso) 
+        {
+            cursos.Add(new Cursos
+            {
+                Id = curso.Id,
+                Name = curso.Name,
+                Description= curso.Description
+            });
+        }
+        return cursos;
     }
 
-    public Task<Cursos> GetCursosByIdAsync(GetCursosByIdDTO getCursosById)
+    public async Task<Cursos> GetCursosByIdAsync(GetCursosByIdDTO getCursosById)
     {
-        throw new NotImplementedException();
+        var cursoid = await _cursosRepository.GetCursoByIdAsync(getCursosById.Id);
+        if (cursoid == null)
+            throw new NotFoundExceptions("Cusos", getCursosById);
+        return cursoid;
     }
 
-    public Task<Cursos> UpdateCursosAsync(UpdateCursosDTO updateCursos)
+    public async Task<Cursos> UpdateCursosAsync(UpdateCursosDTO updateCursos)
     {
-        throw new NotImplementedException();
+        var atualizacurso = await _cursosRepository.UpdateCursoAsync(new Cursos 
+        {
+            Id = updateCursos.Id,
+            Description = updateCursos.Description
+        });
+        return atualizacurso;
     }
 }

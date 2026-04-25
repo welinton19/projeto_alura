@@ -14,14 +14,14 @@ public class CursosRepositories : ICursosRepository
         _dbcontext = dbcontext;
     }
 
-    public async Task AddCursoAsync(Cursos curso)
+    public async Task<Cursos> AddCursoAsync(Cursos curso)
     {
         _dbcontext.Cursos.Add(curso);
         await _dbcontext.SaveChangesAsync();
-        return;
+        return curso;
     }
 
-    public async Task DeleteCursoAsync(long id)
+    public async Task<Cursos> DeleteCursoAsync(long id)
     {
         var curso = await _dbcontext.Cursos.FindAsync(id);
         if (curso != null)
@@ -29,6 +29,7 @@ public class CursosRepositories : ICursosRepository
             _dbcontext.Cursos.Remove(curso);
             await _dbcontext.SaveChangesAsync();
         }
+        return curso;
     }
 
     public async Task<IEnumerable<Cursos>> GetAllCursosAsync()
@@ -41,10 +42,10 @@ public class CursosRepositories : ICursosRepository
         return await _dbcontext.Cursos.FindAsync(id);
     }
 
-    public async Task UpdateCursoAsync(Cursos curso)
+    public async Task<Cursos> UpdateCursoAsync(Cursos curso)
     {
         _dbcontext.Cursos.Update(curso);
         await _dbcontext.SaveChangesAsync();
-        return;
+        return curso;
     }
 }
