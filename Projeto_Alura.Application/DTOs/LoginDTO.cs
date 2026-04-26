@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Projeto_Alura.Domain.Enum;
+using System.ComponentModel.DataAnnotations;
 
 namespace Projeto_Alura.Application.DTOs;
 
@@ -10,4 +11,5 @@ public class LoginDTO
     [Required]
     [MinLength(8, ErrorMessage = "O campo {0} deve conter no mínimo {1} caracteres.")]
     public string Password { get; set; }
+    public Roles Role { get; set; }
 }

@@ -76,6 +76,17 @@ public class UsersService : IUsersServices
         return usersid;
     }
 
+    public async Task<Users?> LoginAsync(string email, string password)
+    {
+        var user = await _userRepository.GetByEmailAsync(email);
+        if (user == null) return null;
+
+        var isValid = BCrypt.Net.BCrypt.Verify(password, user.Password);
+        if (!isValid) return null;
+
+        return user;
+    }
+
     public async Task<Users> UpdateUsersAsync(UpdateUsersDTO updateUsersDTO)
     {
 

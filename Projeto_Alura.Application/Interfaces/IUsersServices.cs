@@ -10,4 +10,5 @@ public interface IUsersServices
     Task<Users> GetUsersById(GetIdUsersDTO idUserDTO);
     Task<Users> UpdateUsersAsync(UpdateUsersDTO updateUsersDTO);
     Task DeleteUsersAsync(DeleteUsersDTO deleteUsersDTO);
+    Task<Users?> LoginAsync(string email, string password);
 }

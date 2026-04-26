@@ -22,9 +22,10 @@ public class CursosService : ICursosServices
 
         var curso = new Cursos 
         {
-            Id = createCursos.id,
+           
             Name = createCursos.Name,
-            Description = createCursos.Description
+            Description = createCursos.Description,
+            Type = createCursos.Type
         };
 
         var criarcurso = await _cursosRepository.AddCursoAsync(curso);
