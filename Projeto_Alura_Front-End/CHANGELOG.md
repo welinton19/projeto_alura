@@ -4,9 +4,9 @@ As seguintes ferramentas foram usadas para gerar este projeto:
 - Angular CLI (ng)
 
 As etapas a seguir foram usadas para gerar este projeto:
-- Crie um projeto angular com ng: `ng new Projeto_Alura_Front_End --defaults --skip-install --skip-git --no-standalone `.
+- Crie um projeto angular com ng: `ng new Projeto_Alura_Front-End --defaults --skip-install --skip-git --no-standalone `.
 - Atualize angular.json com a porta.
-- Criar o arquivo de projeto (`Projeto_Alura_Front_End.esproj`).
+- Criar o arquivo de projeto (`Projeto_Alura_Front-End.esproj`).
 - Crie `launch.json` para habilitar a depuração.
 - Atualize package.json para adicionar `jest-editor-support`.
 - Atualize `start` o script no `package.json` para especificar o host.

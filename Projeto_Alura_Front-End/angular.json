@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "Projeto_Alura_Front_End": {
+    "Projeto_Alura_Front-End": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -66,15 +66,15 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Projeto_Alura_Front_End:build:production"
+              "buildTarget": "Projeto_Alura_Front-End:build:production"
             },
             "development": {
-              "buildTarget": "Projeto_Alura_Front_End:build:development"
+              "buildTarget": "Projeto_Alura_Front-End:build:development"
             }
           },
           "defaultConfiguration": "development",
           "options": {
-            "port": 61353
+            "port": 58754
           }
         },
         "test": {

@@ -36,6 +36,7 @@ public class UsersService : IUsersServices
             Name = createUsersDTO.Name,
             Email = createUsersDTO.Email,
             Password = hashedPassword,
+            ConfirmPassword = hashedPassword,
             Role = createUsersDTO.Role
 
         };

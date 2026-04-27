@@ -9,7 +9,7 @@
     <File Path=".gitignore" />
   </Folder>
   <Folder Name="/Front_End/">
-    <Project Path="Projeto_Alura_Front_End/Projeto_Alura_Front_End.esproj">
+    <Project Path="Projeto_Alura_Front-End/Projeto_Alura_Front-End.esproj">
       <Build />
       <Deploy />
     </Project>
