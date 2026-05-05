@@ -1,0 +1,27 @@
+<div class="header-container">
+    <div class="header-glass">
+     <header>
+      <h1>Projeto <span>Alura</span></h1>
+      <div class="search">
+        <input type="text" placeholder="O que você deseja aprender?">
+      </div>
+      <div class="login">
+        <p class="papel"><!-- {{user.papel}} --></p>
+        <div class="user-drop-down">
+            
+            <button class="drop-btn" (click)="toggleDropdown()"><!-- {{user.email}} --></button>
+            
+            @if (dropdownOpen()) {
+              <div class="drop-content">
+                <a routerLink="/atualizar">Atualizar </a>
+                <a routerLink="/cursos">Meus Cursos</a>
+                <a routerLink="/login">Sair</a>
+              </div>
+            }
+        </div>
+      </div>
+     </header>
+    </div>
+</div>
+       
+        
