@@ -54,7 +54,7 @@ builder.Services.AddSwaggerGen(w =>
     w.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
 });
 
-// ✅ Registra JwtSettings corretamente
+// jWT Settings
 var jwtSettings = builder.Configuration
     .GetSection("JwtSettings")
     .Get<JwtSettings>();

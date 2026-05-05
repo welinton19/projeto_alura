@@ -14,6 +14,7 @@
       <Deploy />
     </Project>
   </Folder>
+  <Project Path="Projeto_Alura-TestesUnitarioseEBDD/Projeto_Alura-TestesUnitarioseEBDD.csproj" Id="347c1f0f-f2b1-4bf6-82f4-b98fa9a6f116" />
   <Project Path="Projeto_Alura.AppHost/Projeto_Alura.AppHost.csproj" />
   <Project Path="Projeto_Alura.ServiceDefaults/Projeto_Alura.ServiceDefaults.csproj" />
 </Solution>
