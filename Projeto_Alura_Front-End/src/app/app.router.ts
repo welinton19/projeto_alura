@@ -3,6 +3,8 @@ import { AtualizarComponent } from "./pages/atualizar/atualizar";
 import { CadastroComponent } from "./pages/cadastro/cadastro";
 import { HomeComponent } from "./pages/home/home";
 import { LoginComponent } from "./pages/login/login";
+import { CriarCursosComponent } from "./pages/criar-cursos/criar-cursos";
+import { FinalizarInscricaoComponent } from "./pages/finalizar-inscricao/finalizar-inscricao";
 
 
 export const routes : Routes = [
@@ -24,8 +26,16 @@ export const routes : Routes = [
         component: CadastroComponent
     },
     {
-        path: 'atualizar',
+        path:'criar-cursos',
+        component: CriarCursosComponent
+    },
+    {
+        path: 'atualizar/:id',
         component: AtualizarComponent
+    },
+    {
+        path: 'finalizar-inscricao/:id',
+        component: FinalizarInscricaoComponent
     },
     {
         path: '**',
