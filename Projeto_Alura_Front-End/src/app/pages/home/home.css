@@ -63,13 +63,23 @@
 }
 
 .card-tipo {
-  background: rgba(155, 89, 245, 0.2);
-  color: #9b59f5;
+  background: rgba(155, 89, 245, 0.25);
+  color: #c084fc;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   padding: 4px 12px;
   border-radius: 20px;
-  border: 1px solid rgba(155, 89, 245, 0.3);
+  border: 1px solid rgba(155, 89, 245, 0.5);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: background 0.3s, color 0.3s, border 0.3s;
+  cursor: default;
+}
+
+.card-tipo:hover {
+  background: rgba(155, 89, 245, 0.5);
+  color: #ffffff;
+  border-color: #9b59f5;
 }
 
 .btn-favorito {
@@ -120,4 +130,93 @@
 .enroll-button:hover {
   opacity: 0.9;
   transform: translateY(-1px);
+}
+.paginacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+  padding-bottom: 32px;
+}
+
+.btn-pagina {
+  background: rgba(155, 89, 245, 0.2);
+  border: 1px solid rgba(155, 89, 245, 0.4);
+  border-radius: 8px;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-pagina:hover:not([disabled]) {
+  background: rgba(155, 89, 245, 0.5);
+}
+
+.btn-pagina[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagina-info {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+.btn-adicionar-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.btn-adicionar {
+  background: linear-gradient(135deg, #9b59f5, #5b4fcf);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.3s, transform 0.2s;
+}
+
+.btn-adicionar:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-editar {
+  background: rgba(255, 193, 7, 0.15);
+  border: 1px solid rgba(255, 193, 7, 0.4);
+  border-radius: 8px;
+  color: #ffc107;
+  padding: 8px 16px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.btn-editar:hover {
+  background: rgba(255, 193, 7, 0.3);
+}
+
+.btn-deletar {
+  background: rgba(255, 107, 107, 0.15);
+  border: 1px solid rgba(255, 107, 107, 0.4);
+  border-radius: 8px;
+  color: #ff6b6b;
+  padding: 8px 16px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.btn-deletar:hover {
+  background: rgba(255, 107, 107, 0.3);
 }

@@ -7,66 +7,49 @@
       <p>Explore nossos cursos em diversas áreas...</p>
       <p>Junte-se a nós hoje e comece sua jornada!</p>
 
-     <div class="cards-grid">
-  <div class="card">
-    <div class="card-header">
-      <span class="card-tipo">Tecnologia</span>
-      <button class="btn-favorito" title="Favoritar">⭐</button>
-    </div>
-    <h2>Curso de Desenvolvimento Web</h2>
-    <p>Aprenda a criar sites e aplicações web do zero com nosso curso completo.</p>
-    <button class="enroll-button">Inscreva-se Agora</button>
-  </div>
+      <!-- Botão Adicionar só para Admin -->
+      @if (authService.isAdmin()) {
+        <div class="btn-adicionar-container">
+          <button class="btn-adicionar" routerLink="/criar-curso">+ Adicionar Curso</button>
+        </div>
+      }
 
-  <div class="card">
-    <div class="card-header">
-      <span class="card-tipo">Design</span>
-      <button class="btn-favorito" title="Favoritar">⭐</button>
-    </div>
-    <h2>Curso de UI/UX Design</h2>
-    <p>Aprenda a criar interfaces modernas e intuitivas do zero.</p>
-    <button class="enroll-button">Inscreva-se Agora</button>
-  </div>
+      <div class="cards-grid">
+        @for (curso of cursosPaginados(); track curso.id) {
+          <div class="card">
+            <div class="card-header">
+              <span class="card-tipo">{{ curso.type }}</span>
+              <button class="btn-favorito" title="Favoritar">⭐</button>
+            </div>
+            <h2>{{ curso.name }}</h2>
+            <p>{{ curso.description }}</p>
 
-  <div class="card">
-    <div class="card-header">
-      <span class="card-tipo">Backend</span>
-      <button class="btn-favorito" title="Favoritar">⭐</button>
-    </div>
-    <h2>Curso de C# com .NET</h2>
-    <p>Aprenda a construir APIs robustas com C# e .NET.</p>
-    <button class="enroll-button">Inscreva-se Agora</button>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      <span class="card-tipo">Tecnologia</span>
-      <button class="btn-favorito" title="Favoritar">⭐</button>
-    </div>
-    <h2>Curso de Desenvolvimento Web</h2>
-    <p>Aprenda a criar sites e aplicações web do zero com nosso curso completo.</p>
-    <button class="enroll-button">Inscreva-se Agora</button>
-  </div>
+            <!-- Todos veem -->
+            <button class="enroll-button">Inscreva-se Agora</button>
 
-  <div class="card">
-    <div class="card-header">
-      <span class="card-tipo">Design</span>
-      <button class="btn-favorito" title="Favoritar">⭐</button>
-    </div>
-    <h2>Curso de UI/UX Design</h2>
-    <p>Aprenda a criar interfaces modernas e intuitivas do zero.</p>
-    <button class="enroll-button">Inscreva-se Agora</button>
-  </div>
+            <!-- Admin e Instructor veem -->
+            @if (authService.isAdmin() || authService.isInstructor()) {
+              <button class="btn-editar">✏️ Editar</button>
+            }
 
-  <div class="card">
-    <div class="card-header">
-      <span class="card-tipo">Backend</span>
-      <button class="btn-favorito" title="Favoritar">⭐</button>
-    </div>
-    <h2>Curso de C# com .NET</h2>
-    <p>Aprenda a construir APIs robustas com C# e .NET.</p>
-    <button class="enroll-button">Inscreva-se Agora</button>
-  </div>
-</div>
+            <!-- Só Admin vê -->
+            @if (authService.isAdmin()) {
+              <button class="btn-deletar">🗑️ Deletar</button>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="paginacao">
+        <button class="btn-pagina" (click)="paginaAnterior()" [disabled]="paginaAtual() === 1">
+          ← Anterior
+        </button>
+        <span class="pagina-info">{{ paginaAtual() }} / {{ totalPaginas() }}</span>
+        <button class="btn-pagina" (click)="proximaPagina()" [disabled]="paginaAtual() === totalPaginas()">
+          Próxima →
+        </button>
+      </div>
+
     </div>
   </div>
 </app-main-layout>

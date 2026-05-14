@@ -51,7 +51,8 @@ public class CursosService : ICursosServices
             {
                 Id = curso.Id,
                 Name = curso.Name,
-                Description= curso.Description
+                Description= curso.Description,
+                Type = curso.Type
             });
         }
         return cursos;

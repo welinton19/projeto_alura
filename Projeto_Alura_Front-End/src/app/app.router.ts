@@ -5,6 +5,7 @@ import { HomeComponent } from "./pages/home/home";
 import { LoginComponent } from "./pages/login/login";
 import { CriarCursosComponent } from "./pages/criar-cursos/criar-cursos";
 import { FinalizarInscricaoComponent } from "./pages/finalizar-inscricao/finalizar-inscricao";
+import { authGuard } from "./guards/auth-guard";
 
 
 export const routes : Routes = [
@@ -19,23 +20,28 @@ export const routes : Routes = [
     },
     {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate: [authGuard]
     },
     {
         path: 'cadastro',
-        component: CadastroComponent
+        component: CadastroComponent,
+        canActivate: [authGuard]
     },
     {
         path:'criar-cursos',
-        component: CriarCursosComponent
+        component: CriarCursosComponent,
+        canActivate: [authGuard]        
     },
     {
         path: 'atualizar/:id',
-        component: AtualizarComponent
+        component: AtualizarComponent,
+        canActivate: [authGuard]
     },
     {
         path: 'finalizar-inscricao/:id',
-        component: FinalizarInscricaoComponent
+        component: FinalizarInscricaoComponent,
+        canActivate: [authGuard]
     },
     {
         path: '**',

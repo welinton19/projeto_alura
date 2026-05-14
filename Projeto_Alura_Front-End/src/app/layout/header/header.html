@@ -2,26 +2,29 @@
     <div class="header-glass">
      <header>
       <h1>Projeto <span>Alura</span></h1>
+      
       <div class="search">
         <input type="text" placeholder="O que você deseja aprender?">
       </div>
+
       <div class="login">
-        <p class="papel"><!-- {{user.papel}} --></p>
+        <!-- email e role separados -->
+        <div class="user-info">
+          <p class="user-email">{{ email() }}</p>
+          <span class="papel">{{ role() }}</span>
+        </div>
+
         <div class="user-drop-down">
-            
-            <button class="drop-btn" (click)="toggleDropdown()"><!-- {{user.email}} --></button>
-            
-            @if (dropdownOpen()) {
-              <div class="drop-content">
-                <a routerLink="/atualizar">Atualizar </a>
-                <a routerLink="/cursos">Meus Cursos</a>
-                <a routerLink="/login">Sair</a>
-              </div>
-            }
+          <button class="drop-btn" (click)="toggleDropdown()">+</button>
+          @if (dropdownOpen()) {
+            <div class="drop-content">
+              <a routerLink="/atualizar">Atualizar Perfil</a>
+              <a (click)="logout()" style="cursor:pointer">Sair</a>
+            </div>
+          }
         </div>
       </div>
+
      </header>
     </div>
 </div>
-       
-        

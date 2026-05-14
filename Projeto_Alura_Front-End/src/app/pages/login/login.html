@@ -5,18 +5,34 @@
       <p>Escola de Cursos de <span class="highlight">Programação</span></p>
     </div>
 
-    <form class="login-form">
+    <form class="login-form" (ngSubmit)="login()">
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+        <input 
+          type="email" 
+          id="email" 
+          placeholder="seu@email.com"
+          [value]="Email()"
+          (input)="Email.set($any($event.target).value)"
+          required>
       </div>
 
       <div class="form-group">
         <label for="password">Senha</label>
-        <input type="password" id="password" name="password" placeholder="••••••••" required>
+        <input 
+          type="password" 
+          id="password"
+          placeholder="••••••••"
+          [value]="Password()"
+          (input)="Password.set($any($event.target).value)"
+          required>
       </div>
 
-      <button type="submit" class="btn-login" routerLink="/home">Entrar</button>
+      @if (error()) {
+        <p class="erro">{{ error() }}</p>
+      }
+
+      <button type="submit" class="btn-login" >Entrar</button>
     </form>
 
     <div class="login-footer">
