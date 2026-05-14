@@ -13,7 +13,8 @@ var api  = builder.AddProject<Projects.Projeto_Alura>("projeto-alura")
 //Angular
 builder.AddNpmApp("frontend", "../Projeto_Alura_Front-End")
     .WithReference(api)
-    .WithHttpEndpoint(port: 4200, env:"PORT")
-    .WithExternalHttpEndpoints();
+    .WithHttpEndpoint(port: 4300, env:"PORT")
+    .WithExternalHttpEndpoints()
+    .PublishAsDockerFile();
 
 builder.Build().Run();
