@@ -10,7 +10,7 @@
       <!-- Botão Adicionar só para Admin -->
       @if (authService.isAdmin()) {
         <div class="btn-adicionar-container">
-          <button class="btn-adicionar" routerLink="/criar-curso">+ Adicionar Curso</button>
+          <button class="btn-adicionar" routerLink="/criar-cursos">+ Adicionar Curso</button>
         </div>
       }
 
@@ -29,7 +29,7 @@
 
             <!-- Admin e Instructor veem -->
             @if (authService.isAdmin() || authService.isInstructor()) {
-              <button class="btn-editar">✏️ Editar</button>
+              <button class="btn-editar" routerLink="/atualizar-curso/{{ curso.id }}">✏️ Editar</button>
             }
 
             <!-- Só Admin vê -->

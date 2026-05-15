@@ -6,6 +6,7 @@ import { LoginComponent } from "./pages/login/login";
 import { CriarCursosComponent } from "./pages/criar-cursos/criar-cursos";
 import { FinalizarInscricaoComponent } from "./pages/finalizar-inscricao/finalizar-inscricao";
 import { authGuard } from "./guards/auth-guard";
+import { AtualizarCursoComponent } from "./pages/atualizar-curso/atualizar-curso";
 
 
 export const routes : Routes = [
@@ -34,8 +35,13 @@ export const routes : Routes = [
         canActivate: [authGuard]        
     },
     {
-        path: 'atualizar/:id',
+        path: 'atualizar',
         component: AtualizarComponent,
+        canActivate: [authGuard]
+    },
+    {
+        path: 'atualizar-curso/:id',
+        component: AtualizarCursoComponent,
         canActivate: [authGuard]
     },
     {

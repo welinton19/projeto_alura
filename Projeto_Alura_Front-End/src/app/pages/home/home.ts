@@ -2,11 +2,12 @@ import { Component, OnInit, signal } from '@angular/core';
 import { MainLayoutComponent } from '../../layout/main-layout/main-layout';
 import { CursoService } from '../../services/curso';
 import { AuthService } from '../../services/auth';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MainLayoutComponent],
+  imports: [MainLayoutComponent, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

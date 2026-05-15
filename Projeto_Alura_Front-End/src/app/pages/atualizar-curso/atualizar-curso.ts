@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-atualizar',
+  selector: 'app-atualizar-curso',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './atualizar.html',
-  styleUrl: './atualizar.css',
+  templateUrl: './atualizar-curso.html',
+  styleUrl: './atualizar-curso.css',
 })
-export class AtualizarComponent {
+export class AtualizarCursoComponent {
 
 }
